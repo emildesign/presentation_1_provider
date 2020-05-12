@@ -27,30 +27,28 @@ class _WidgetPieChartState extends State<WidgetPieChart> {
 
   @override
   Widget build(BuildContext context) {
-      return Container(
-        child: Center(
+    return Container(
+      child: Center(
           child: PieChart(
-            dataMap: dataMap,
-            animationDuration: Duration(milliseconds: 800),
-            chartLegendSpacing: 32.0,
-            chartRadius: MediaQuery.of(context).size.width / 1.2,
-            showChartValuesInPercentage: true,
-            showChartValues: false,
-            showChartValuesOutside: false,
-            chartValueBackgroundColor: Colors.grey[200],
-            colorList: colorList,
-            showLegends: false,
-            legendPosition: LegendPosition.right,
-            decimalPlaces: 1,
-            showChartValueLabel: false,
-            initialAngle: 0,
-            chartValueStyle: defaultChartValueStyle.copyWith(
-              color: Colors.blueGrey[900].withOpacity(0.9),
-            ),
-            chartType: ChartType.disc,
-          )
+        dataMap: dataMap,
+        animationDuration: Duration(milliseconds: 800),
+        chartLegendSpacing: 32.0,
+        chartRadius: MediaQuery.of(context).size.width / 1.2,
+        showChartValuesInPercentage: true,
+        showChartValues: false,
+        showChartValuesOutside: false,
+        chartValueBackgroundColor: Colors.grey[200],
+        colorList: colorList,
+        showLegends: false,
+        legendPosition: LegendPosition.right,
+        decimalPlaces: 1,
+        showChartValueLabel: false,
+        initialAngle: 0,
+        chartValueStyle: defaultChartValueStyle.copyWith(
+          color: Colors.blueGrey[900].withOpacity(0.9),
         ),
-      );
+        chartType: ChartType.disc,
+      )),
+    );
   }
 }
-
