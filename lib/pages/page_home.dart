@@ -13,6 +13,8 @@ class PageHome extends StatefulWidget {
 }
 
 class _PageHomeState extends State<PageHome> {
+  double flutterValue = 0;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -20,12 +22,27 @@ class _PageHomeState extends State<PageHome> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            WidgetPieChart(),
-            Container(height: 100,),
-            WidgetSlider(),
+            WidgetPieChart(
+              flutterValue: flutterValue,
+            ),
+            Container(
+              height: 100,
+            ),
+            WidgetSlider(onSetFlutterValueFunction: (value) {
+              _updateFlutterValue(value);
+            }),
           ],
         ),
       ),
+    );
+  }
+
+  void _updateFlutterValue(double value) {
+    print("$value");
+      setState(
+      () {
+        flutterValue = value;
+      },
     );
   }
 }

@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class WidgetSlider extends StatefulWidget {
+  WidgetSlider({@required this.onSetFlutterValueFunction});
+
   @override
   _WidgetSliderState createState() => _WidgetSliderState();
+  
+  final Function(double) onSetFlutterValueFunction;
 }
 
 class _WidgetSliderState extends State<WidgetSlider> {
-  double _value = 0;
-
+  double flutterValue = 0;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -17,10 +20,11 @@ class _WidgetSliderState extends State<WidgetSlider> {
         label: 'label',
         min: 0,
         max: 100,
-        value: _value,
+        value: flutterValue,
         onChanged: (value) {
           setState(() {
-            _value = value;
+            flutterValue = value;
+            widget.onSetFlutterValueFunction(flutterValue);
           });
         },
       ),

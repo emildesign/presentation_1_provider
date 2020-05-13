@@ -3,8 +3,12 @@ import 'package:flutter/widgets.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 class WidgetPieChart extends StatefulWidget {
+  WidgetPieChart({@required this.flutterValue});
+
   @override
   _WidgetPieChartState createState() => _WidgetPieChartState();
+
+  double flutterValue;
 }
 
 class _WidgetPieChartState extends State<WidgetPieChart> {
@@ -19,14 +23,16 @@ class _WidgetPieChartState extends State<WidgetPieChart> {
   @override
   void initState() {
     super.initState();
-    dataMap.putIfAbsent("Flutter", () => 5);
-    dataMap.putIfAbsent("React", () => 3);
-    dataMap.putIfAbsent("Xamarin", () => 2);
-    dataMap.putIfAbsent("Ionic", () => 2);
+    dataMap.putIfAbsent("Flutter", () => widget.flutterValue);
+    dataMap.putIfAbsent("React", () => 30);
+    dataMap.putIfAbsent("Xamarin", () => 20);
+    dataMap.putIfAbsent("Ionic", () => 20);
   }
 
   @override
   Widget build(BuildContext context) {
+    dataMap["Flutter"] = widget.flutterValue;
+
     return Container(
       child: Center(
           child: PieChart(
