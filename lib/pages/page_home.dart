@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:presentation1provider/models/model_flutter_value.dart';
 import 'package:presentation1provider/widget/widget_pie_chart.dart';
-import 'package:presentation1provider/widget/widget_slider.dart';
+import 'package:presentation1provider/widget/widget_slider_flutter_value.dart';
 import 'package:provider/provider.dart';
 
 class PageHome extends StatefulWidget {
@@ -30,7 +30,7 @@ class _PageHomeState extends State<PageHome> {
               Container(
                 height: 100,
               ),
-              WidgetSlider(),
+              WidgetSliderFlatterValue(),
             ],
           ),
         ),
