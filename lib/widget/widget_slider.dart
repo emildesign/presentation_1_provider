@@ -1,31 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:presentation1provider/models/model_flutter_value.dart';
+import 'package:provider/provider.dart';
 
 class WidgetSlider extends StatefulWidget {
-  WidgetSlider({@required this.onSetFlutterValueFunction});
-
   @override
   _WidgetSliderState createState() => _WidgetSliderState();
-  
-  final Function(double) onSetFlutterValueFunction;
 }
 
 class _WidgetSliderState extends State<WidgetSlider> {
-  double flutterValue = 0;
   @override
   Widget build(BuildContext context) {
+    var modelFlutterValue = Provider.of<ModelFlutterValue>(context);
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Slider(
         label: 'label',
         min: 0,
         max: 100,
-        value: flutterValue,
+        value: modelFlutterValue.flutterValue,
         onChanged: (value) {
-          setState(() {
-            flutterValue = value;
-            widget.onSetFlutterValueFunction(flutterValue);
-          });
+          modelFlutterValue.flutterValue = value;
         },
       ),
     );

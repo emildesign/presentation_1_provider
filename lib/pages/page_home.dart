@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:presentation1provider/models/model_flutter_value.dart';
 import 'package:presentation1provider/widget/widget_pie_chart.dart';
 import 'package:presentation1provider/widget/widget_slider.dart';
+import 'package:provider/provider.dart';
 
 class PageHome extends StatefulWidget {
   PageHome({@required this.title});
@@ -17,21 +19,20 @@ class _PageHomeState extends State<PageHome> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            WidgetPieChart(
-              flutterValue: flutterValue,
-            ),
-            Container(
-              height: 100,
-            ),
-            WidgetSlider(onSetFlutterValueFunction: (value) {
-              _updateFlutterValue(value);
-            }),
-          ],
+    return ChangeNotifierProvider<ModelFlutterValue>(
+      create: (context) => ModelFlutterValue(),
+      child: SafeArea(
+        child: Scaffold(
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              WidgetPieChart(),
+              Container(
+                height: 100,
+              ),
+              WidgetSlider(),
+            ],
+          ),
         ),
       ),
     );
