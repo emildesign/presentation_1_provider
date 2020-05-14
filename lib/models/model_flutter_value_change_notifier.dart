@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart';
 
 class ModelFlutterValue with ChangeNotifier {
-  static const String TAG = "DataModel";
+  static const String TAG = "ModelFlutterValue";
 
   double _flutterValue = 0;
 

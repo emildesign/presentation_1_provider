@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:pie_chart/pie_chart.dart';
-import 'package:presentation1provider/models/model_flutter_value.dart';
+import 'package:presentation1provider/models/model_flutter_value_change_notifier.dart';
+import 'package:presentation1provider/models/model_react_value_change_notifier.dart';
 import 'package:provider/provider.dart';
 
 class WidgetPieChart extends StatefulWidget {
@@ -28,8 +29,9 @@ class _WidgetPieChartState extends State<WidgetPieChart> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     var modelFlutterValue = Provider.of<ModelFlutterValue>(context);
+    var modelReactValue = Provider.of<ModelReactValue>(context);
     dataMap.putIfAbsent("Flutter", () => modelFlutterValue.flutterValue);
-    dataMap.putIfAbsent("React", () => 30);
+    dataMap.putIfAbsent("React", () => modelReactValue.reactValue);
     dataMap.putIfAbsent("Xamarin", () => 20);
     dataMap.putIfAbsent("Ionic", () => 20);
   }
@@ -39,6 +41,8 @@ class _WidgetPieChartState extends State<WidgetPieChart> {
     return Consumer<ModelFlutterValue>(
       builder: (context, dataModel, child) {
         dataMap["Flutter"] = dataModel.flutterValue;
+        var modelReactValue = Provider.of<ModelReactValue>(context);
+        dataMap["React"] = modelReactValue.reactValue;
         return Container(
           child: Center(
               child: PieChart(
