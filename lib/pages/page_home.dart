@@ -21,23 +21,23 @@ class _PageHomeState extends State<PageHome> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ModelReactValue>(
-      create: (context) => ModelReactValue(),
-      child: ChangeNotifierProvider<ModelFlutterValue>(
-        create: (context) => ModelFlutterValue(),
-        child: SafeArea(
-          child: Scaffold(
-            body: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                WidgetPieChart(),
-                Container(
-                  height: 100,
-                ),
-                WidgetSliderFlatterValue(),
-                WidgetSliderReactValue()
-              ],
-            ),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ModelFlutterValue>(create: (context) => ModelFlutterValue()),
+        ChangeNotifierProvider<ModelReactValue>(create: (context) => ModelReactValue()),
+      ],
+      child: SafeArea(
+        child: Scaffold(
+          body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              WidgetPieChart(),
+              Container(
+                height: 100,
+              ),
+              WidgetSliderFlatterValue(),
+              WidgetSliderReactValue()
+            ],
           ),
         ),
       ),
@@ -46,7 +46,7 @@ class _PageHomeState extends State<PageHome> {
 
   void _updateFlutterValue(double value) {
     print("$value");
-      setState(
+    setState(
       () {
         flutterValue = value;
       },
